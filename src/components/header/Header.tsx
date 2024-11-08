@@ -1,24 +1,17 @@
-'use client'
+"use client";
 
-import { useState } from "react"
-import { ShoppingCart, Menu, Heart, User, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { ShoppingCart, Menu, Heart, User, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+} from "@/components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export default function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
-
   const NavLinks = () => (
     <>
       <a href="#" className="text-gray-600 hover:text-gray-900">
@@ -34,7 +27,7 @@ export default function Header() {
         About
       </a>
     </>
-  )
+  );
 
   return (
     <header className="bg-white shadow-sm">
@@ -56,18 +49,25 @@ export default function Header() {
             </Sheet>
             <h1 className="text-xl font-bold text-gray-900">Furnish Plus</h1>
           </div>
+
           <nav className="hidden lg:flex items-center space-x-4">
             <NavLinks />
           </nav>
+
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="icon">
-              <Heart className="h-5 w-5" />
-              <span className="sr-only">Wishlist</span>
-            </Button>
-            <Button variant="ghost" size="icon">
-              <ShoppingCart className="h-5 w-5" />
-              <span className="sr-only">Shopping cart</span>
-            </Button>
+            <a href="/@wishlist">
+              <Button variant="ghost" size="icon">
+                <Heart className="h-5 w-5" />
+                <span className="sr-only">Wishlist</span>
+              </Button>
+            </a>
+            <a href="/@cart">
+              <Button variant="ghost" size="icon">
+                <ShoppingCart className="h-5 w-5" />
+                <span className="sr-only">Shopping cart</span>
+              </Button>
+            </a>
+
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -75,13 +75,18 @@ export default function Header() {
                   <span className="sr-only">User menu</span>
                 </Button>
               </DropdownMenuTrigger>
+
               <DropdownMenuContent align="end">
                 <DropdownMenuItem>
-                  <a href="#" className="flex w-full">My Profile</a>
+                  <a href="#" className="flex w-full">
+                    My Profile
+                  </a>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <a href="#" className="flex w-full">Logout</a>
+                  <a href="#" className="flex w-full">
+                    Logout
+                  </a>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -89,5 +94,5 @@ export default function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }
